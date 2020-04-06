@@ -1,16 +1,21 @@
 <ion-header [translucent]="true" no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-icon slot="icon-only" name="bonfire"></ion-icon>
+        <!-- <ion-icon slot="icon-only" name="bonfire"></ion-icon> -->
+        <ion-icon class="ion-padding" slot="icon-only" name="logo-android"></ion-icon>
     </ion-buttons>
     <ion-title>
-      FotosGram
+      NombreApp xd
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="light" [fullscreen]="true">
+<ion-content>
   <!-- Refresher -->
+
+  <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <app-posts [posts]="posts"></app-posts> 
 
@@ -21,7 +26,10 @@
   <!-- Infinete Scroll -->
 
 
-
+  <ion-infinite-scroll threshold="25%" position="bottom" [disabled]="!habilitado" (ionInfinite)="siguientes($event)">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
   <!-- <ion-header collapse="condense">
     <ion-toolbar>

@@ -11,26 +11,48 @@ export class Tab1Page implements OnInit {
 
   posts: Post[] = [];
 
+  habilitado = true;
+
   constructor(private postsService: PostsService) {
     this.getPosts();
   }
 
-  getPosts(){
-    this.postsService.getPosts()
-      .subscribe(
-      data => {
-        console.log(data);
-        this.posts.push( ...data.post );      
-        console.log(this.posts); 
-      }, 
-      err => {
-        console.error('Error: ', err);          
-      });  
-
-  }
   ngOnInit(){
-    
+    this.siguientes();
+  }
+
+  getPosts(){
+  }
+
+  refrescar(event){
+    this.siguientes( event, true);
+    this.habilitado = true;
+    this.posts = [];
+  }
+  
+
+  siguientes(event?: any, pull: boolean = false) {
+    setTimeout(() => {
+      this.postsService.getPosts( pull )
+        .subscribe(
+        data => {
+          console.log(data);
+          
+          this.posts.push( ...data.post ); 
+  
+          if (event) {
+            event.target.complete();
+            if (data.post.length === 0) {
+              // event.target.disabled = true;
+              this.habilitado = false;
+            }
+          }
+        }, 
+        err => {
+          console.error('Error: ', err);          
+        });  
       
+    }, 500);
   }
 
 }
