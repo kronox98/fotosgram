@@ -1,0 +1,15 @@
+
+
+<ion-header no-border>
+  <ion-toolbar >
+    <ion-avatar *ngIf="titulo != 'Perfil'" slot="start" (click)="openMenu()">
+      <img src="assets/avatars/{{ usuario.avatar }}" />
+    </ion-avatar>
+    <ion-title>{{ titulo }}</ion-title>
+    <ion-buttons slot="end" *ngIf="titulo == 'Perfil'">
+      <ion-button >
+        <ion-icon (click)="logout()" slot="icon-only" name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

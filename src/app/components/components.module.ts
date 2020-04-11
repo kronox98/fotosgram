@@ -4,14 +4,23 @@ import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
 import { IonicModule } from '@ionic/angular';
 import { PipesModule } from '../pipes/pipes.module';
+import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
+import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     PostComponent,
-    PostsComponent
+    PostsComponent,
+    AvatarSelectorComponent,
+    HeaderComponent,
+    MenuComponent
   ],
   exports: [
-    PostsComponent
+    PostsComponent,
+    AvatarSelectorComponent,
+    HeaderComponent,
+    MenuComponent
   ],
   imports: [
     PipesModule,

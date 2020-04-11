@@ -8,10 +8,10 @@ import { Post } from 'src/app/interfaces/interfaces';
 })
 export class PostComponent implements OnInit {
 
-  @Input() post: Post = {};
+  @Input() post: Post;
 
   
-  constructor() { }
+  constructor() {}
   
   img1 = "/assets/perro-1.jpg";
   img2 = "/assets/perro-2.jpg";

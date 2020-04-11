@@ -35,11 +35,8 @@ export class Tab1Page implements OnInit {
     setTimeout(() => {
       this.postsService.getPosts( pull )
         .subscribe(
-        data => {
-          console.log(data);
-          
-          this.posts.push( ...data.post ); 
-  
+        data => {          
+          this.posts.push( ...data.post );   
           if (event) {
             event.target.complete();
             if (data.post.length === 0) {
