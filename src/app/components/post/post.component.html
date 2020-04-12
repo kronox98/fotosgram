@@ -1,7 +1,7 @@
 
 
 <div class="post" *ngIf="post">
-
+  <!-- cabecera del post -->
   <ion-item lines="none">
     <ion-avatar slot="start">
       <img src="/assets/avatars/{{ post.usuario.avatar }}" />
@@ -12,10 +12,47 @@
     </ion-label>
   </ion-item>
 
+  <!-- Imagenes -->
   <ion-slides mode="ios" pager="ios">
     <ion-slide class="image-slide" [style]="img1 | domSanitizer"></ion-slide>
     <ion-slide class="image-slide" [style]="img2 | domSanitizer"></ion-slide>
     <ion-slide class="image-slide" [style]="img3 | domSanitizer"></ion-slide>
+  </ion-slides>
+
+
+  <!-- Mapa -->
+
+  <app-mapa [coords]="post.coords"></app-mapa>
+
+
+  <!-- Acciones de Usuario -->
+  <ion-item lines="none">
+    <ion-icon slot="start" name="heart-outline"></ion-icon>
+    <ion-icon name="chatbubble-outline"></ion-icon>
+    <ion-icon slot="end"   name="bookmark-outline"></ion-icon>
+  </ion-item>
+
+  <!-- Mensaje del Post -->
+  <ion-item>
+    <ion-label class="ion-text-wrap ion-text-justify">{{ post.mensaje }}</ion-label>
+  </ion-item>
+
+</div>
+
+<!-- Skeleton -- No Funcional -->
+<div class="post" *ngIf="!post">
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+    </ion-label>
+  </ion-item>
+
+  <ion-slides mode="ios" pager="ios">
+    <ion-skeleton-text animated style="width: 100%; height: 250px"></ion-skeleton-text>
   </ion-slides>
 
   <ion-item lines="none">
@@ -25,35 +62,7 @@
   </ion-item>
 
   <ion-item>
-    <ion-label class="ion-text-wrap ion-text-justify">{{ post.mensaje }}</ion-label>
+    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
   </ion-item>
-
 </div>
-
-
-  <div class="post" *ngIf="!post">
-    <ion-item lines="none">
-      <ion-avatar slot="start">
-        <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
-      </ion-avatar>
-      <ion-label>
-        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
-        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-      </ion-label>
-    </ion-item>
-  
-    <ion-slides mode="ios" pager="ios">
-      <ion-skeleton-text animated style="width: 100%; height: 250px"></ion-skeleton-text>
-    </ion-slides>
-  
-    <ion-item lines="none">
-      <ion-icon slot="start" name="heart-outline"></ion-icon>
-      <ion-icon name="chatbubble-outline"></ion-icon>
-      <ion-icon slot="end"   name="bookmark-outline"></ion-icon>
-    </ion-item>
-  
-    <ion-item>
-      <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-    </ion-item>
-  </div>
 

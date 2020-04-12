@@ -38,15 +38,17 @@ export class LoginPage implements OnInit {
   }
 
   async login( fLogin: NgForm) {
-    console.log( fLogin.valid );
     if (fLogin.invalid) {
       return;
     }
-
+    
     const valido = await this.usuarioService.login(this.loginUser.email, this.loginUser.password);
+
+    console.log(valido);
+    
     if (valido) {
       this.navCtrl.navigateRoot( '/main/tabs/tab1', { animated: true } );
-      // Se nabega al home
+      // Se navega al home
     }else{
       // Mostrar alerta
       this.uiService.presentAlert('Usuario o contraseña no son correctas', 'Mensaje');

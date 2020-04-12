@@ -7,6 +7,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
+import { MapaComponent } from './mapa/mapa.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MenuComponent } from './menu/menu.component';
     PostsComponent,
     AvatarSelectorComponent,
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    MapaComponent
   ],
   exports: [
     PostsComponent,
